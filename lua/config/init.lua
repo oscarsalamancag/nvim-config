@@ -1,3 +1,9 @@
+require("config.globals")
+require("config.options")
+require("config.keymaps")
+require("config.autocmds")
+require("util.floaterminal")
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -39,9 +45,3 @@ local opts = {
 -- vim.lsp.set_log_level("debug")
 
 require("lazy").setup("plugins", opts)
-
-require("config.globals")
-require("config.options")
-require("config.keymaps")
-require("config.autocmds")
-require("util.floaterminal")
