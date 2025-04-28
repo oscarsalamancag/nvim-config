@@ -11,12 +11,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("config.globals")
-require("config.options")
-require("config.keymaps")
-require("config.autocmds")
-require("util.floaterminal")
-
 local opts = {
 	defaults = {
 		lazy = true,
@@ -42,6 +36,12 @@ local opts = {
 	},
 }
 
-vim.lsp.set_log_level("debug")
+-- vim.lsp.set_log_level("debug")
 
 require("lazy").setup("plugins", opts)
+
+require("config.globals")
+require("config.options")
+require("config.keymaps")
+require("config.autocmds")
+require("util.floaterminal")
