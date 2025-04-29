@@ -31,7 +31,7 @@ end
 
 return {
 	"nvim-telescope/telescope.nvim",
-	tag = "0.1.6",
+	tag = "0.1.8",
 	lazy = false,
 	priority = 49,
 	dependencies = { "nvim-lua/plenary.nvim" },
