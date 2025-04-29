@@ -5,7 +5,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	group = lsp_fmt_group,
 	callback = function(args)
 		local buf = args.buf
-		local clients = vim.lsp.get_active_clients({ bufnr = args.buf })
+		local clients = vim.lsp.get_clients({ bufnr = args.buf })
 		local efm_attached = false
 
 		for _, client in ipairs(clients) do
