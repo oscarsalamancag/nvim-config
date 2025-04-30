@@ -1,7 +1,12 @@
 return {
 	"folke/noice.nvim",
 	event = "VeryLazy",
+	-- lazy = false,
+	-- priority = 10,
 	opts = {
+		-- lsp = {
+		-- 	progress = { enabled = false },
+		-- },
 		routes = {
 			{
 				view = "notify",
