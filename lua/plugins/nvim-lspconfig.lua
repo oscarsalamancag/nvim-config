@@ -6,13 +6,6 @@ local config = function()
 	local cmp_nvim_lsp = require("cmp_nvim_lsp")
 	local lspconfig = require("lspconfig")
 
-	-- old way of using signs
-	-- for type, icon in pairs(diagnostic_signs) do
-	-- 	local hl = "DiagnosticSign" .. type
-	-- 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-	-- end
-
-	-- Modern way to set diagnostics signs and options
 	vim.diagnostic.config({
 		virtual_text = true,
 		signs = {
@@ -25,7 +18,7 @@ local config = function()
 			border = "rounded",
 			source = true,
 		},
-		virtual_lines = true,
+		virtual_lines = false,
 	})
 
 	local capabilities = cmp_nvim_lsp.default_capabilities()
