@@ -1,24 +1,17 @@
 return {
 	"folke/noice.nvim",
 	event = "VeryLazy",
-	-- lazy = false,
-	-- priority = 10,
 	opts = {
-		-- lsp = {
-		-- 	progress = { enabled = false },
-		-- },
 		routes = {
 			{
 				view = "notify",
 				filter = { event = "msg_showmode" },
 			},
-			-- {
-			-- 	view = "notify",
-			-- 	filter = {
-			-- 		event = "msg_show",
-			-- 		find = "recorded",
-			-- 	},
-			-- },
+		},
+		presets = {
+			bottom_search = true,
+			command_palette = true,
+			long_message_to_split = true,
 		},
 	},
 	dependencies = {
@@ -27,13 +20,13 @@ return {
 		-- OPTIONAL:
 		--   `nvim-notify` is only needed, if you want to use the notification view.
 		--   If not available, we use `mini` as the fallback
-		-- {
-		-- 	"rcarriga/nvim-notify",
-		-- 	config = function()
-		-- 		require("notify").setup({
-		-- 			background_colour = "#000000",
-		-- 		})
-		-- 	end,
-		-- },
+		{
+			"rcarriga/nvim-notify",
+			config = function()
+				require("notify").setup({
+					background_colour = "#000000",
+				})
+			end,
+		},
 	},
 }
