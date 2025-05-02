@@ -1,26 +1,10 @@
 local on_attach = require("util.lsp").on_attach
-local diagnostic_signs = require("util.lsp").diagnostic_signs
+local diagnostic_signs = require("util.icons").diagnostic_signs
 
 local config = function()
 	require("neoconf").setup({})
 	local cmp_nvim_lsp = require("cmp_nvim_lsp")
 	local lspconfig = require("lspconfig")
-
-	vim.diagnostic.config({
-		virtual_text = true,
-		signs = {
-			text = diagnostic_signs,
-		},
-		underline = true,
-		update_in_insert = false,
-		severity_sort = true,
-		float = {
-			border = "rounded",
-			source = true,
-		},
-		virtual_lines = false,
-	})
-
 	local capabilities = cmp_nvim_lsp.default_capabilities()
 
 	-- lua
@@ -32,12 +16,15 @@ local config = function()
 				-- make the language server recognize "vim" global
 				diagnostics = {
 					globals = { "vim" },
+					-- Added to supress the warnings for Missing required fields.
+					disable = { "missing-parameters", "missing-fields" },
 				},
 				workspace = {
 					-- make language server aware of runtime files
+					-- library = runtime_files,
 					library = {
-						[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-						[vim.fn.stdpath("config") .. "/lua"] = true,
+						vim.fn.expand("$VIMRUNTIME/lua"),
+						vim.fn.expand("$XDG_CONFIG_HOME") .. "/nvim/lua",
 					},
 				},
 			},
@@ -114,6 +101,21 @@ local config = function()
 	lspconfig.dockerls.setup({
 		capabilities = capabilities,
 		on_attach = on_attach,
+	})
+
+	vim.diagnostic.config({
+		virtual_text = true,
+		signs = {
+			text = diagnostic_signs,
+		},
+		underline = true,
+		update_in_insert = false,
+		severity_sort = true,
+		float = {
+			border = "rounded",
+			source = true,
+		},
+		virtual_lines = false,
 	})
 
 	local luacheck = require("efmls-configs.linters.luacheck")
