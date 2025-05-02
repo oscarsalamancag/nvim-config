@@ -3,6 +3,6 @@ return {
 	lazy = false,
 	priority = 999,
 	opts = function()
-		vim.cmd("colorscheme tokyonight")
+		vim.cmd("colorscheme tokyonight-storm")
 	end,
 }
