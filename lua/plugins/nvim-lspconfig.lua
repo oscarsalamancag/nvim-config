@@ -61,6 +61,9 @@ local config = function()
 		capabilities = capabilities,
 		filetypes = {
 			"typescript",
+			"javascript",
+			"typescriptreact",
+			"javascriptreact",
 		},
 		root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
 	})
@@ -84,7 +87,6 @@ local config = function()
 		capabilities = capabilities,
 		on_attach = on_attach,
 		filetypes = {
-			"html",
 			"typescriptreact",
 			"javascriptreact",
 			"javascript",
@@ -94,6 +96,7 @@ local config = function()
 			"less",
 			"svelte",
 			"vue",
+			"html",
 		},
 	})
 
